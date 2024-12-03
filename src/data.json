@@ -1,0 +1,94 @@
+{
+    "properties": [
+      {
+        "id": 1,
+        "name": "Cozy Cottage",
+        "description": "A cozy cottage in the countryside.",
+        "location": "Countryside",
+        "price": "$120/night",
+        "amenities": ["WiFi", "Parking", "Kitchen"],
+        "rating": 3.5
+      },
+      {
+        "id": 2,
+        "name": "Modern Apartment",
+        "description": "A modern apartment in the city center.",
+        "location": "City Center",
+        "price": "$150/night",
+        "amenities": ["WiFi", "Air Conditioning", "Gym"],
+        "rating": 4.7
+      },
+      {
+        "id": 3,
+        "name": "Beach House",
+        "description": "A beautiful beach house with ocean views.",
+        "location": "Beachfront",
+        "price": "$200/night",
+        "amenities": ["WiFi", "Pool", "Beach Access"],
+        "rating": 3.8
+      },
+      {
+        "id": 4,
+        "name": "Luxury Villa",
+        "description": "A luxury villa with a private pool.",
+        "location": "Suburbs",
+        "price": "$300/night",
+        "amenities": ["WiFi", "Private Pool", "Spa"],
+        "rating": 5.0
+      },
+      {
+        "id": 5,
+        "name": "Charming Bungalow",
+        "description": "A charming bungalow with a garden.",
+        "location": "Suburbs",
+        "price": "$100/night",
+        "amenities": ["WiFi", "Garden", "BBQ"],
+        "rating": 2.3
+      },
+      {
+        "id": 6,
+        "name": "Downtown Studio",
+        "description": "A stylish studio in downtown.",
+        "location": "Downtown",
+        "price": "$130/night",
+        "amenities": ["WiFi", "Kitchen", "Laundry"],
+        "rating": 4.6
+      },
+      {
+        "id": 7,
+        "name": "Rustic Cabin",
+        "description": "A rustic cabin in the woods.",
+        "location": "Forest",
+        "price": "$90/night",
+        "amenities": ["WiFi", "Fireplace", "Hiking Trails"],
+        "rating": 2.2
+      },
+      {
+        "id": 8,
+        "name": "Penthouse Suite",
+        "description": "A luxurious penthouse with city views.",
+        "location": "City Center",
+        "price": "$400/night",
+        "amenities": ["WiFi", "Rooftop Terrace", "Concierge"],
+        "rating": 4.9
+      },
+      {
+        "id": 9,
+        "name": "Family Home",
+        "description": "A spacious family home with a backyard.",
+        "location": "Suburbs",
+        "price": "$250/night",
+        "amenities": ["WiFi", "Backyard", "Playground"],
+        "rating": 3.4
+      },
+      {
+        "id": 10,
+        "name": "Urban Loft",
+        "description": "An urban loft with modern amenities.",
+        "location": "Downtown",
+        "price": "$180/night",
+        "amenities": ["WiFi", "Smart TV", "Workspace"],
+        "rating": 4.5
+      }
+    ]
+}
