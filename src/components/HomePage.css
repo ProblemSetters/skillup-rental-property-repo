@@ -1,36 +1,36 @@
 .home-page {
-    text-align: center;
+  text-align: center;
 }
 
-.home-page h3{
-    margin: 3% auto 1% auto;
+.home-page h3 {
+  margin: 3% auto 1% auto;
 }
-  
+
 .property-cards {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: 24px;
 }
-  
+
 .property-card {
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    margin: 10px;
-    padding: 10px;
-    width: 200px;
+  border: 1px solid #ccc;
+  border-radius: 0px;
+  margin: 10px;
+  padding: 10px;
+  width: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 }
-  
+
 .property-card img {
-    width: 100%;
-    height: auto;
-    border-radius: 5px;
+  width: 100%;
+  height: 175px;
+  border-radius: 5px;
 }
 
-.search-bar{
-    margin: 1% auto 3% auto;
-}
-
-.filter{
-    display: inline;
-    margin-left: 1.5%;
+.filter {
+  display: inline;
+  margin-left: 1.5%;
 }

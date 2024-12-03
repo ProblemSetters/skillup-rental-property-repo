@@ -7,11 +7,24 @@ import "./HomePage.css";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceOrder, setPriceOrder] = useState(""); 
+  const [priceOrder, setPriceOrder] = useState("");
+
   const [amenitiesFilter, setAmenitiesFilter] = useState([]);
   const [ratingFilter, setRatingFilter] = useState("");
 
   const properties = propertiesData.properties;
+
+  const [minPrice, maxPrice] = properties.reduce(
+    ([min, max], property) => {
+      const price = parseInt(
+        property.price.replace("$", "").replace("/night", "")
+      );
+      return [Math.min(min, price), Math.max(max, price)];
+    },
+    [Infinity, -Infinity]
+  );
+
+  const [priceFilter, setPriceFilter] = useState([minPrice, maxPrice]);
 
   const uniqueAmenities = Array.from(
     new Set(properties.flatMap((property) => property.amenities))
@@ -29,11 +42,19 @@ const HomePage = () => {
         })()
       : true;
 
+    const matchesPrice = (() => {
+      const [min, max] = priceFilter;
+      const price = parseInt(
+        property.price.replace("$", "").replace("/night", "")
+      );
+      return price >= min && price <= max;
+    })();
+
     const matchesSearch = property.name
       .toLowerCase()
       .includes(searchTerm.toLowerCase());
 
-    return matchesAmenities && matchesRating && matchesSearch;
+    return matchesAmenities && matchesRating && matchesSearch && matchesPrice;
   });
 
   if (priceOrder) {
@@ -48,17 +69,20 @@ const HomePage = () => {
     setPriceOrder("");
     setAmenitiesFilter([]);
     setRatingFilter("");
+    setPriceFilter([minPrice, maxPrice]);
   };
 
   return (
     <div className="home-page">
-      <h3>Find Your Perfect Home Away From Home!</h3>
+      <h2>Find Your Perfect Home Away From Home!</h2>
       <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
       <FilterButton
         setPriceOrder={setPriceOrder}
         setAmenitiesFilter={setAmenitiesFilter}
         setRatingFilter={setRatingFilter}
+        setPriceFilter={setPriceFilter}
         priceOrder={priceOrder}
+        priceFilter={priceFilter}
         amenitiesFilter={amenitiesFilter}
         ratingFilter={ratingFilter}
         uniqueAmenities={uniqueAmenities}
@@ -70,7 +94,7 @@ const HomePage = () => {
             <PropertyCard key={property.id} property={property} />
           ))
         ) : (
-          <p>No rental property available</p>
+          <h3>No rental property available</h3>
         )}
       </div>
     </div>
