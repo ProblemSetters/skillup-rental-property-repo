@@ -6,7 +6,7 @@
         "description": "A cozy cottage in the countryside.",
         "location": "Countryside",
         "price": "$120/night",
-        "amenities": ["WiFi", "Parking", "Kitchen"],
+        "amenities": ["Parking", "Kitchen"],
         "rating": 3.5
       },
       {
@@ -24,7 +24,7 @@
         "description": "A beautiful beach house with ocean views.",
         "location": "Beachfront",
         "price": "$200/night",
-        "amenities": ["WiFi", "Pool", "Beach Access"],
+        "amenities": ["Pool", "Beach Access"],
         "rating": 3.8
       },
       {
@@ -33,7 +33,7 @@
         "description": "A luxury villa with a private pool.",
         "location": "Suburbs",
         "price": "$300/night",
-        "amenities": ["WiFi", "Private Pool", "Spa"],
+        "amenities": ["WiFi", "Private Pool", "Spa", "Parking"],
         "rating": 5.0
       },
       {
@@ -60,7 +60,7 @@
         "description": "A rustic cabin in the woods.",
         "location": "Forest",
         "price": "$90/night",
-        "amenities": ["WiFi", "Fireplace", "Hiking Trails"],
+        "amenities": ["Fireplace", "Hiking Trails"],
         "rating": 2.2
       },
       {
@@ -69,7 +69,7 @@
         "description": "A luxurious penthouse with city views.",
         "location": "City Center",
         "price": "$400/night",
-        "amenities": ["WiFi", "Rooftop Terrace", "Concierge"],
+        "amenities": ["Rooftop Terrace", "Concierge"],
         "rating": 4.9
       },
       {

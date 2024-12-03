@@ -29,3 +29,8 @@
 .search-bar{
     margin: 1% auto 3% auto;
 }
+
+.filter{
+    display: inline;
+    margin-left: 1.5%;
+}
