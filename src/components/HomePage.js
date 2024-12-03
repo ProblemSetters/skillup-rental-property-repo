@@ -65,9 +65,13 @@ const HomePage = () => {
         onClear={handleClearFilters}
       />
       <div className="property-cards">
-        {filteredProperties.map((property) => (
-          <PropertyCard key={property.id} property={property} />
-        ))}
+        {filteredProperties.length > 0 ? (
+          filteredProperties.map((property) => (
+            <PropertyCard key={property.id} property={property} />
+          ))
+        ) : (
+          <p>No rental property available</p>
+        )}
       </div>
     </div>
   );
