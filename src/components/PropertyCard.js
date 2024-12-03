@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import placeholderImage from "../assests/placeholder.jpeg";
 
 const PropertyCard = ({ property }) => {
@@ -9,6 +10,7 @@ const PropertyCard = ({ property }) => {
       <p>{property.description}</p>
       <p>Location: {property.location}</p>
       <p>Price: {property.price}</p>
+      <Link to={`/property-details/${property.id}`}>View Details</Link>
     </div>
   );
 };
