@@ -13,7 +13,9 @@ const PropertyDetails = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleApplyCoupon = () => {
-    const price = parseInt(property.price.replace("$", "").replace("/night", ""));
+    const price = parseInt(
+      property.price.replace("$", "").replace("/night", "")
+    );
     let discount = 0;
 
     switch (coupon.toUpperCase()) {
@@ -32,8 +34,8 @@ const PropertyDetails = () => {
     }
 
     setDiscountedPrice(price - price * discount);
-    setErrorMessage(""); 
-    setIsModalOpen(false); 
+    setErrorMessage("");
+    setIsModalOpen(false);
   };
 
   return (
@@ -46,15 +48,21 @@ const PropertyDetails = () => {
       <p>Price: {property.price}</p>
       <p>Amenities: {property.amenities.join(", ")}</p>
       <p>Rating: {property.rating} Stars</p>
-      {discountedPrice !== null && <p>Discounted Price: ${discountedPrice}/night</p>}
-      
-      <button onClick={() => setIsModalOpen(true)}>Apply Discount Coupon</button>
-      <button>Book Property</button>
+      {discountedPrice !== null && (
+        <p>Discounted Price: ${discountedPrice}/night</p>
+      )}
+
+      <div className="cta-buttons">
+        <button onClick={() => setIsModalOpen(true)}>
+          Apply Discount Coupon
+        </button>
+        <button>Book Property</button>
+      </div>
 
       {isModalOpen && (
         <div className="custom-modal">
           <div className="modal-content">
-            <h2>Enter Coupon Code</h2>
+            <h4>Enter Coupon Code</h4>
             <input
               type="text"
               value={coupon}
@@ -62,7 +70,9 @@ const PropertyDetails = () => {
               placeholder="Enter coupon code"
             />
             <button onClick={handleApplyCoupon}>Apply Coupon</button>
-            <button onClick={() => setIsModalOpen(false)}>Close</button>
+            <button className="danger" onClick={() => setIsModalOpen(false)}>
+              Close
+            </button>
             {errorMessage && <p className="error-message">{errorMessage}</p>}
           </div>
         </div>
