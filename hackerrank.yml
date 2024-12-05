@@ -6,7 +6,9 @@ configuration:
     files:
       - junit.xml
   readonly_paths:
-    - src/App.test.js
+    - src/test/*
+    - src/index.js
+    - src/data.json
   ide_config:
     default_open_files:
       - src/App.js
