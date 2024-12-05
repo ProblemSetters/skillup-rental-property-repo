@@ -6,6 +6,7 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
     <input
       className="search-bar"
       type="text"
+      data-testid="search-bar"
       placeholder="Search properties..."
       value={searchTerm}
       onChange={(e) => setSearchTerm(e.target.value)}

@@ -7,12 +7,12 @@ const PropertyCard = ({ property }) => {
     <div className="property-card">
       <div>
         <img src={placeholderImage} alt="property" />
-        <h3>{property.name}</h3>
+        <h3 data-testid="property-name">{property.name}</h3>
         <p>{property.description}</p>
         <p>Location: {property.location}</p>
         <p>Price: {property.price}</p>
       </div>
-      <Link to={`/property-details/${property.id}`}>View Details</Link>
+      <Link to={`/property-details/${property.id}`} data-testid="ss">View Details</Link>
     </div>
   );
 };
