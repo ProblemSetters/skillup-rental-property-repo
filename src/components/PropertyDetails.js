@@ -13,6 +13,11 @@ const PropertyDetails = () => {
   const [errorMessage, setErrorMessage] = useState("");
 
   const handleApplyCoupon = () => {
+    if (coupon.trim() === "") {
+      setErrorMessage("Empty input field");
+      return;
+    }
+
     const price = parseInt(
       property.price.replace("$", "").replace("/night", "")
     );

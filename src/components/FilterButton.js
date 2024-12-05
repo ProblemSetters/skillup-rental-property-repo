@@ -27,7 +27,7 @@ const FilterButton = ({
   return (
     <div className="filter">
       <button onClick={() => setPriceOrder(isAscSortSelected ? "desc" : "asc")}>
-        {isAscSortSelected ? "Sort High to Low" : "Sort Low to High"}
+        {isAscSortSelected ? "Price: High to Low" : "Price: Low to High"}
       </button>
       <button onClick={() => setShowFilters(!showFilters)}>
         {showFilters ? "Hide Filters" : "Show Filters"}
