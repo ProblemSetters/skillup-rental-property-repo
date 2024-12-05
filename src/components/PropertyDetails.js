@@ -47,18 +47,25 @@ const PropertyDetails = () => {
     <div className="property-details-card">
       <h1>Property Details</h1>
       <img src={placeholderImage} alt="property" />
-      <h2>{property.name}</h2>
-      <h4>{property.description}</h4>
-      <p>Location: {property.location}</p>
-      <p>Price: {property.price}</p>
-      <p>Amenities: {property.amenities.join(", ")}</p>
-      <p>Rating: {property.rating} Stars</p>
+      <h2 data-testid="property-name">{property.name}</h2>
+      <h4 data-testid="property-desc">{property.description}</h4>
+      <p data-testid="property-location">Location: {property.location}</p>
+      <p data-testid="property-price">Price: {property.price}</p>
+      <p data-testid="property-amenities">
+        Amenities: {property.amenities.join(", ")}
+      </p>
+      <p data-testid="property-rating">Rating: {property.rating} Stars</p>
       {discountedPrice !== null && (
-        <p>Discounted Price: ${discountedPrice}/night</p>
+        <p data-testid="property-disc-price">
+          Discounted Price: ${discountedPrice}/night
+        </p>
       )}
 
       <div className="cta-buttons">
-        <button onClick={() => setIsModalOpen(true)}>
+        <button
+          data-testid="apply-discount"
+          onClick={() => setIsModalOpen(true)}
+        >
           Apply Discount Coupon
         </button>
         <button>Book Property</button>
@@ -71,14 +78,21 @@ const PropertyDetails = () => {
             <input
               type="text"
               value={coupon}
+              data-testid="modal-input"
               onChange={(e) => setCoupon(e.target.value)}
               placeholder="Enter coupon code"
             />
-            <button onClick={handleApplyCoupon}>Apply Coupon</button>
+            <button data-testid="modal-apply" onClick={handleApplyCoupon}>
+              Apply Coupon
+            </button>
             <button className="danger" onClick={() => setIsModalOpen(false)}>
               Close
             </button>
-            {errorMessage && <p className="error-message">{errorMessage}</p>}
+            {errorMessage && (
+              <p data-testid="error" className="error-message">
+                {errorMessage}
+              </p>
+            )}
           </div>
         </div>
       )}

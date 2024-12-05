@@ -12,7 +12,7 @@ const PropertyCard = ({ property }) => {
         <p>Location: {property.location}</p>
         <p>Price: {property.price}</p>
       </div>
-      <Link to={`/property-details/${property.id}`} data-testid="ss">View Details</Link>
+      <Link to={`/property-details/${property.id}`} data-testid="view-details">View Details</Link>
     </div>
   );
 };
