@@ -16,6 +16,7 @@ const HomePage = () => {
         {propertiesData.properties.map((property) => (
           <PropertyCard key={property.id} property={property} />
         ))}
+        <h3 disabled className="message" data-testid="conditional-message">No rental property available</h3>
       </div>
     </div>
   );
