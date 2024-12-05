@@ -1,0 +1,13 @@
+.search-bar {
+  width: 400px;
+  height: 44px;
+  padding: 10px;
+  box-sizing: border-box;
+  border-radius: 0px;
+  font-size: 16px;
+}
+
+.search-bar:focus {
+  border-color: var(--brand-box-shadow);
+  outline: none;
+}

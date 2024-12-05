@@ -7,6 +7,7 @@
     "h8k-design": "^1.0.16",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1",
     "react-scripts": "^5.0.1"
   },
   "scripts": {
@@ -15,6 +16,9 @@
     "start": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "./node_modules/.bin/react-scripts test --watchAll=false --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit",
+    "test:task1": "(react-scripts test test/task1/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task1.xml)",
+    "test:task2": "(react-scripts test test/task2/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task2.xml)",
+    "test:task3": "(react-scripts test test/task3/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task3.xml)",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

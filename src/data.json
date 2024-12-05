@@ -1,0 +1,94 @@
+{
+    "properties": [
+      {
+        "id": 1,
+        "name": "Cozy Cottage",
+        "description": "A cozy cottage in the countryside.",
+        "location": "London, England, UK",
+        "price": "$120/night",
+        "amenities": ["Free Wi-Fi", "Swimming Pool"],
+        "rating": 3.5
+      },
+      {
+        "id": 2,
+        "name": "Modern Apartment",
+        "description": "A modern apartment in the city center.",
+        "location": "New York, USA",
+        "price": "$150/night",
+        "amenities": ["Free Wi-Fi", "Air Conditioning", "Gym"],
+        "rating": 4.7
+      },
+      {
+        "id": 3,
+        "name": "Beach House",
+        "description": "A beautiful beach house with ocean views.",
+        "location": "Coastal City, USA",
+        "price": "$200/night",
+        "amenities": ["Swimming Pool", "Beach Access", "Gym"],
+        "rating": 3.8
+      },
+      {
+        "id": 4,
+        "name": "Luxury Villa",
+        "description": "A luxury villa with a private pool.",
+        "location": "Sydney, Australia",
+        "price": "$300/night",
+        "amenities": ["Free Wi-Fi", "Parking", "Swimming Pool", "Air Conditioning"],
+        "rating": 5.0
+      },
+      {
+        "id": 5,
+        "name": "Charming Bungalow",
+        "description": "A charming bungalow with a garden.",
+        "location": "Tropical Island, USA",
+        "price": "$100/night",
+        "amenities": ["Free Wi-Fi", "Garden", "Air Conditioning"],
+        "rating": 2.3
+      },
+      {
+        "id": 6,
+        "name": "Downtown Studio",
+        "description": "A stylish studio in downtown.",
+        "location": "Vienna, Austria",
+        "price": "$130/night",
+        "amenities": ["Free Wi-Fi", "Laundry"],
+        "rating": 4.6
+      },
+      {
+        "id": 7,
+        "name": "Rustic Cabin",
+        "description": "A rustic cabin in the woods.",
+        "location": "Peaksburg, USA",
+        "price": "$90/night",
+        "amenities": ["Free Wi-Fi"],
+        "rating": 2.2
+      },
+      {
+        "id": 8,
+        "name": "Penthouse Suite",
+        "description": "A luxurious penthouse with city views.",
+        "location": "Mumbai, India",
+        "price": "$400/night",
+        "amenities": ["Free Wi-Fi", "Parking", "Swimming Pool", "Gym", "Air Conditioning"],
+        "rating": 4.9
+      },
+      {
+        "id": 9,
+        "name": "Family Home",
+        "description": "A spacious family home with a backyard.",
+        "location": "Sydney, Australia",
+        "price": "$250/night",
+        "amenities": ["Parking"],
+        "rating": 3.4
+      },
+      {
+        "id": 10,
+        "name": "Urban Loft",
+        "description": "An urban loft with modern amenities.",
+        "location": "Tokyo, Japan",
+        "price": "$180/night",
+        "amenities": ["Free Wi-Fi", "Parking", "Gym"],
+        "rating": 4.5
+      }
+    ]
+}
