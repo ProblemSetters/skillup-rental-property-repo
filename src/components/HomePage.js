@@ -24,7 +24,7 @@ const HomePage = () => {
             <PropertyCard key={property.id} property={property} />
           ))
         ) : (
-          <h3 data-testid="conditional-message">
+          <h3 className="message" data-testid="conditional-message">
             No rental property available
           </h3>
         )}

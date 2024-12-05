@@ -34,3 +34,7 @@
   display: inline;
   margin-left: 1.5%;
 }
+
+.message[disabled]{
+    display: none;
+}
