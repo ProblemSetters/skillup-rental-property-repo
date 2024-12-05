@@ -17,6 +17,7 @@
     "build": "react-scripts build",
     "test": "./node_modules/.bin/react-scripts test --watchAll=false --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit",
     "test:task1": "(react-scripts test test/task1/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task1.xml)",
+    "test:task2": "(react-scripts test test/task2/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task2.xml)",
     "eject": "react-scripts eject"
   },
   "devDependencies": {

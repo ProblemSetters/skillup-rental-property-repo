@@ -15,7 +15,7 @@
         "description": "A modern apartment in the city center.",
         "location": "New York, USA",
         "price": "$150/night",
-        "amenities": ["WiFi", "Air Conditioning", "Gym"],
+        "amenities": ["Free Wi-Fi", "Air Conditioning", "Gym"],
         "rating": 4.7
       },
       {
@@ -42,7 +42,7 @@
         "description": "A charming bungalow with a garden.",
         "location": "Tropical Island, USA",
         "price": "$100/night",
-        "amenities": ["WiFi", "Garden", "Air Conditioning"],
+        "amenities": ["Free Wi-Fi", "Garden", "Air Conditioning"],
         "rating": 2.3
       },
       {

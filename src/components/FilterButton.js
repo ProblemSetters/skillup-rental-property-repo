@@ -26,10 +26,10 @@ const FilterButton = ({
 
   return (
     <div className="filter">
-      <button onClick={() => setPriceOrder(isAscSortSelected ? "desc" : "asc")}>
+      <button data-testid="price-button" onClick={() => setPriceOrder(isAscSortSelected ? "desc" : "asc")}>
         {isAscSortSelected ? "Price: High to Low" : "Price: Low to High"}
       </button>
-      <button onClick={() => setShowFilters(!showFilters)}>
+      <button data-testid="filter-button" onClick={() => setShowFilters(!showFilters)}>
         {showFilters ? "Hide Filters" : "Show Filters"}
       </button>
 
@@ -43,6 +43,7 @@ const FilterButton = ({
                 Min Price:
                 <input
                   type="number"
+                  data-testid="price-input-min"
                   min="1"
                   max={priceFilter[1]}
                   value={priceFilter[0]}
@@ -55,6 +56,7 @@ const FilterButton = ({
                 Max Price:
                 <input
                   type="number"
+                  data-testid="price-input-max"
                   min={priceFilter[0]}
                   max="1000"
                   value={priceFilter[1]}
@@ -72,6 +74,7 @@ const FilterButton = ({
                   <input
                     type="radio"
                     name="rating"
+                    data-testid="rating-filter"
                     value={range}
                     checked={ratingFilter === range}
                     onChange={(e) => setRatingFilter(e.target.value)}
@@ -90,6 +93,7 @@ const FilterButton = ({
                 <label key={amenity}>
                   <input
                     type="checkbox"
+                    data-testid="amenities-filter"
                     checked={amenitiesFilter.includes(amenity)}
                     onChange={() => handleAmenityChange(amenity)}
                   />
@@ -98,7 +102,7 @@ const FilterButton = ({
               ))}
             </div>
           </div>
-          <button onClick={onClear}>Clear</button>
+          <button data-testid="clear-button" onClick={onClear}>Clear</button>
         </div>
       )}
     </div>
