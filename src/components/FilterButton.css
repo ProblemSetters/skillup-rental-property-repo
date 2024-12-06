@@ -42,6 +42,6 @@
   justify-content: flex-start;
 }
 
-.filters-container[disabled] {
+.filter[disabled]{
   display: none;
 }
