@@ -153,6 +153,22 @@ describe('Filter Component Testing', () => {
     expect(properties[1].textContent).toBe("Charming Bungalow");
   }); 
 
+  it('Rating and amenities filter is working together correctly', () => {
+    let properties = screen.getAllByTestId("property-name");
+    expect(properties.length).toBe(10);
+    const filterBtn = screen.getByTestId("filter-button");
+    fireEvent.click(filterBtn);
+    
+    const ratingOptions = screen.getAllByTestId("rating-filter");
+    const targetOption = ratingOptions.find(option => option.value === "2-3");
+    fireEvent.click(targetOption);
+    const amenitiesCheckboxes = screen.getAllByTestId("amenities-filter");
+    fireEvent.click(amenitiesCheckboxes[2]); 
+    properties = screen.getAllByTestId("property-name");
+    expect(properties.length).toBe(1);
+    expect(properties[0].textContent).toBe("Charming Bungalow");
+  }); 
+
   it('All filters combined are working correctly', () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
@@ -203,5 +219,13 @@ describe('Filter Component Testing', () => {
     expect(properties.length).toBe(2);
     expect(properties[0].textContent).toBe("Urban Loft");
     expect(properties[1].textContent).toBe("Penthouse Suite");
+
+    const clearBtn = screen.getByTestId("clear-button");
+    fireEvent.click(clearBtn)
+    properties = screen.getAllByTestId("property-name");
+    expect(properties.length).toBe(10);
+    properties.forEach((property, index) => {
+        expect(property.textContent).toBe(data.properties[index].name);
+    });
   }); 
 });
