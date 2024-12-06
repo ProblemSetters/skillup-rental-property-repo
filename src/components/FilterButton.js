@@ -3,7 +3,7 @@ import "./FilterButton.css";
 
 const FilterButton = () => {
   return (
-    <div className="filter">
+    <div disabled className="filter">
       <button data-testid="price-button">
         Price: Low to High {/* Price: High to Low */}
       </button>
@@ -11,7 +11,7 @@ const FilterButton = () => {
         Show Filters {/* Hide Filters */}
       </button>
 
-      <div disabled className="filters-container">
+      <div className="filters-container">
         <div disabled className="filters">
           {/* Price Filter */}
           <div className="price-filter">
