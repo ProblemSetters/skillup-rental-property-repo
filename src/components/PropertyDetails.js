@@ -1,8 +1,7 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import propertiesData from "../data.json";
-import placeholderImage from "../assests/placeholder.jpeg";
-import "./PropertyDetails.css";
+import { Star, MapPin, Tag } from "lucide-react";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -44,55 +43,120 @@ const PropertyDetails = () => {
   };
 
   return (
-    <div className="property-details-card">
-      <h1>Property Details</h1>
-      <img src={placeholderImage} alt="property" />
-      <h2 data-testid="property-name">{property.name}</h2>
-      <h4 data-testid="property-desc">{property.description}</h4>
-      <p data-testid="property-location">Location: {property.location}</p>
-      <p data-testid="property-price">Price: {property.price}</p>
-      <p data-testid="property-amenities">
-        Amenities: {property.amenities.join(", ")}
-      </p>
-      <p data-testid="property-rating">Rating: {property.rating} Stars</p>
-      {discountedPrice !== null && (
-        <p data-testid="property-disc-price">
-          Discounted Price: ${discountedPrice}/night
-        </p>
-      )}
+    <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
+      <div className="max-w-2xl w-full mx-auto bg-white rounded-2xl shadow-lg overflow-hidden">
+        <img
+          src={property.image}
+          alt={property.name}
+          className="w-full h-96 object-cover"
+        />
 
-      <div className="cta-buttons">
-        <button
-          data-testid="apply-discount"
-          onClick={() => setIsModalOpen(true)}
-        >
-          Apply Discount Coupon
-        </button>
-        <button>Book Property</button>
+        <div className="p-8 pb-8">
+          <h1
+            data-testid="property-name"
+            className="text-3xl font-bold text-gray-900 mb-8"
+          >
+            {property.name}
+          </h1>
+
+          <div className="flex items-center space-x-4 mb-6">
+            <div className="flex items-center text-yellow-500">
+              <Star className="fill-yellow-500" size={20} />
+              <span data-testid="property-rating" className="ml-1 font-semibold">
+                {property.rating} Stars
+              </span>
+            </div>
+            <div className="flex items-center text-green-700">
+              <MapPin size={20} />
+              <span data-testid="property-location" className="ml-1">{property.location}</span>
+            </div>
+          </div>
+
+          <p
+            data-testid="property-desc"
+            className="text-gray-600 mb-6 leading-relaxed"
+          >
+            {property.description}
+          </p>
+
+          <div className="border-t border-b border-gray-200 py-6 mb-6">
+            <h3 className="text-lg font-semibold mb-4">Amenities</h3>
+            <div data-testid="property-amenities" className="grid grid-cols-2 md:grid-cols-4 gap-8">
+              {property.amenities.map((amenity) => (
+                <div
+                  key={amenity}
+                  className="bg-green-50 text-green-900 p-2 rounded-lg text-sm"
+                >
+                  {amenity}
+                </div>
+              ))}
+            </div>
+          </div>
+
+          <div className="flex items-center justify-between my-12">
+            <div>
+              <p data-testid="property-price" className="text-xl font-bold text-green-700">
+                {property.price}
+              </p>
+              {discountedPrice && (
+                <p
+                  data-testid="property-disc-price"
+                  className="text-base text-green-600 mt-1"
+                >
+                  Discounted Price: ${discountedPrice}/night
+                </p>
+              )}
+            </div>
+            <div className="space-x-4">
+              <button
+                data-testid="apply-discount"
+                onClick={() => setIsModalOpen(true)}
+                className="inline-flex px-9 py-2 border border-green-700 text-green-700 rounded-lg hover:bg-green-50 transition"
+              >
+                <Tag size={18} className="mr-2" />
+                Apply Discount
+              </button>
+              <button className="px-9 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
+                Book Now
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
 
+      {/* Modal */}
       {isModalOpen && (
-        <div className="custom-modal">
-          <div className="modal-content">
-            <h4>Enter Coupon Code</h4>
+        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+          <div className="bg-white rounded-xl p-6 w-full max-w-md">
+            <h4 className="text-xl font-semibold mb-4">Enter Coupon Code</h4>
             <input
               type="text"
               value={coupon}
               data-testid="modal-input"
               onChange={(e) => setCoupon(e.target.value)}
               placeholder="Enter coupon code"
+              className="w-full px-16 py-2 my-12 border rounded-lg mb-8 focus:ring-2 focus:ring-green-700 focus:border-transparent"
             />
-            <button data-testid="modal-apply" onClick={handleApplyCoupon}>
-              Apply Coupon
-            </button>
-            <button className="danger" onClick={() => setIsModalOpen(false)}>
-              Close
-            </button>
             {errorMessage && (
-              <p data-testid="error" className="error-message">
+              <p data-testid="error" className="text-red-500 mb-12">
                 {errorMessage}
               </p>
             )}
+            <div className="flex space-x-4">
+              <button
+                data-testid="modal-apply"
+                onClick={handleApplyCoupon}
+                className="flex-1 bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition"
+              >
+                Apply Coupon
+              </button>
+              <button
+                onClick={() => setIsModalOpen(false)}
+                className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition"
+              >
+                Close
+              </button>
+            </div>
           </div>
         </div>
       )}

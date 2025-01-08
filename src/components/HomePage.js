@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import PropertyCard from "./PropertyCard";
 import SearchBar from "./SearchBar";
-import FilterButton from "./FilterButton";
+import FilterModal from "./FilterModal";
 import propertiesData from "../data.json";
-import "./HomePage.css";
+import { SlidersHorizontal } from "lucide-react";
+import logo from "../assests/logo.png";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
-  const [priceOrder, setPriceOrder] = useState("");
+  const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+
+  const [tempAmenitiesFilter, setTempAmenitiesFilter] = useState([]);
+  const [tempRatingFilter, setTempRatingFilter] = useState("");
+  const [tempPriceFilter, setTempPriceFilter] = useState([90, 400]);
 
   const [amenitiesFilter, setAmenitiesFilter] = useState([]);
   const [ratingFilter, setRatingFilter] = useState("");
+  const [priceFilter, setPriceFilter] = useState([90, 400]);
 
   const properties = propertiesData.properties;
 
@@ -23,8 +29,6 @@ const HomePage = () => {
     },
     [Infinity, -Infinity]
   );
-
-  const [priceFilter, setPriceFilter] = useState([minPrice, maxPrice]);
 
   const uniqueAmenities = Array.from(
     new Set(properties.flatMap((property) => property.amenities))
@@ -57,46 +61,93 @@ const HomePage = () => {
     return matchesAmenities && matchesRating && matchesSearch && matchesPrice;
   });
 
-  if (priceOrder) {
-    filteredProperties = filteredProperties.sort((a, b) => {
-      const priceA = parseInt(a.price.replace("$", "").replace("/night", ""));
-      const priceB = parseInt(b.price.replace("$", "").replace("/night", ""));
-      return priceOrder === "asc" ? priceA - priceB : priceB - priceA;
-    });
-  }
+  const handleApplyFilters = () => {
+    setAmenitiesFilter(tempAmenitiesFilter);
+    setRatingFilter(tempRatingFilter);
+    setPriceFilter(tempPriceFilter);
+    setIsFilterModalOpen(false);
+  };
 
   const handleClearFilters = () => {
-    setPriceOrder("");
+    setTempAmenitiesFilter([]);
+    setTempRatingFilter("");
+    setTempPriceFilter([90, 400]);
+
     setAmenitiesFilter([]);
     setRatingFilter("");
-    setPriceFilter([minPrice, maxPrice]);
+    setPriceFilter([90, 400]);
+    setIsFilterModalOpen(false);
+  };
+
+  const handleCloseModal = () => {
+    setTempAmenitiesFilter(amenitiesFilter);
+    setTempRatingFilter(ratingFilter);
+    setTempPriceFilter(priceFilter);
+    setIsFilterModalOpen(false);
   };
 
   return (
-    <div className="home-page">
-      <h2>Find Your Perfect Home Away From Home!</h2>
-      <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-      <FilterButton
-        setPriceOrder={setPriceOrder}
-        setAmenitiesFilter={setAmenitiesFilter}
-        setRatingFilter={setRatingFilter}
-        setPriceFilter={setPriceFilter}
-        priceOrder={priceOrder}
-        priceFilter={priceFilter}
-        amenitiesFilter={amenitiesFilter}
-        ratingFilter={ratingFilter}
-        uniqueAmenities={uniqueAmenities}
-        onClear={handleClearFilters}
-      />
-      <div className="property-cards">
-        {filteredProperties.length > 0 ? (
-          filteredProperties.map((property) => (
-            <PropertyCard key={property.id} property={property} />
-          ))
-        ) : (
-          <h3 data-testid="conditional-message">No rental property available</h3>
-        )}
-      </div>
+    <div className="bg-gray-50 min-h-screen">
+      <header className="bg-white shadow-md p-4 sticky top-0 z-50">
+        <div className="max-w-6xl mx-auto flex items-center justify-between">
+          <img
+            src={logo}
+            alt="property"
+            className="h-3 w-3 rounded object-cover"
+          />
+          <h1 className="text-xl font-bold text-gray-800 w-1/4 pl-1.5">
+            Rental Property
+          </h1>
+          <div className="w-1/2 px-6">
+            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
+          </div>
+          <div className="w-1/4 mx-3 flex justify-start">
+            <button
+              onClick={() => setIsFilterModalOpen(true)}
+              className="bg-gray-100 mx-8 hover:bg-gray-200 p-2 rounded-lg transition"
+            >
+              <SlidersHorizontal size={24} className="text-gray-700 mx-1.5" />
+              Filters
+            </button>
+          </div>
+        </div>
+      </header>
+
+      <main className="max-w-6xl mx-auto mt-20 px-4 pt-12 pb-8">
+        <div className="grid md:grid-cols-4 gap-6">
+          {filteredProperties.length > 0 ? (
+            filteredProperties.map((property) => (
+              <PropertyCard key={property.id} property={property} />
+            ))
+          ) : (
+            <div className="col-span-4 text-center py-12">
+              <p
+                data-testid="conditional-message"
+                className="text-xl text-gray-600"
+              >
+                No rental properties found
+              </p>
+            </div>
+          )}
+        </div>
+      </main>
+
+      {isFilterModalOpen && (
+        <FilterModal
+          onClose={handleCloseModal}
+          amenitiesFilter={tempAmenitiesFilter}
+          setAmenitiesFilter={setTempAmenitiesFilter}
+          ratingFilter={tempRatingFilter}
+          setRatingFilter={setTempRatingFilter}
+          priceFilter={tempPriceFilter}
+          setPriceFilter={setTempPriceFilter}
+          uniqueAmenities={uniqueAmenities}
+          onClear={handleClearFilters}
+          onApply={handleApplyFilters}
+          minPrice={minPrice}
+          maxPrice={maxPrice}
+        />
+      )}
     </div>
   );
 };

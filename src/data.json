@@ -3,6 +3,7 @@
       {
         "id": 1,
         "name": "Cozy Cottage",
+        "image": "/properties/cottage.png",
         "description": "A cozy cottage in the countryside.",
         "location": "London, England, UK",
         "price": "$120/night",
@@ -12,6 +13,7 @@
       {
         "id": 2,
         "name": "Modern Apartment",
+        "image": "/properties/apartment.png",
         "description": "A modern apartment in the city center.",
         "location": "New York, USA",
         "price": "$150/night",
@@ -21,6 +23,7 @@
       {
         "id": 3,
         "name": "Beach House",
+        "image": "/properties/beach-house.png",
         "description": "A beautiful beach house with ocean views.",
         "location": "Coastal City, USA",
         "price": "$200/night",
@@ -30,6 +33,7 @@
       {
         "id": 4,
         "name": "Luxury Villa",
+        "image": "/properties/villa.png",
         "description": "A luxury villa with a private pool.",
         "location": "Sydney, Australia",
         "price": "$300/night",
@@ -39,6 +43,7 @@
       {
         "id": 5,
         "name": "Charming Bungalow",
+        "image": "/properties/bungalow.png",
         "description": "A charming bungalow with a garden.",
         "location": "Tropical Island, USA",
         "price": "$100/night",
@@ -48,6 +53,7 @@
       {
         "id": 6,
         "name": "Downtown Studio",
+        "image": "/properties/studio.png",
         "description": "A stylish studio in downtown.",
         "location": "Vienna, Austria",
         "price": "$130/night",
@@ -57,6 +63,7 @@
       {
         "id": 7,
         "name": "Rustic Cabin",
+        "image": "/properties/rustic-cabin.png",
         "description": "A rustic cabin in the woods.",
         "location": "Peaksburg, USA",
         "price": "$90/night",
@@ -66,6 +73,7 @@
       {
         "id": 8,
         "name": "Penthouse Suite",
+        "image": "/properties/penthouse.png",
         "description": "A luxurious penthouse with city views.",
         "location": "Mumbai, India",
         "price": "$400/night",
@@ -75,6 +83,7 @@
       {
         "id": 9,
         "name": "Family Home",
+        "image": "/properties/family-home.png",
         "description": "A spacious family home with a backyard.",
         "location": "Sydney, Australia",
         "price": "$250/night",
@@ -84,6 +93,7 @@
       {
         "id": 10,
         "name": "Urban Loft",
+        "image": "/properties/urban-loft.png",
         "description": "An urban loft with modern amenities.",
         "location": "Tokyo, Japan",
         "price": "$180/night",
