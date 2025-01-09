@@ -4,7 +4,7 @@ import { screen, render, cleanup, fireEvent, act } from "@testing-library/react"
 import "@testing-library/jest-dom/extend-expect";
 
 global.console.warn = jest.fn();
-describe('Property Details Page Testing', () => {
+describe('Apply Discount Modal Testing', () => {
 
   beforeEach(() => {
     render(
@@ -16,35 +16,10 @@ describe('Property Details Page Testing', () => {
     cleanup();
   });
 
-  it('Routing is correctly handled', () => {
-    expect(window.location.pathname).toBe('/');
+  it('Modal Validation is correctly handled - 1', () => {
+    const properties = screen.getAllByTestId("property-name");
+    fireEvent.click(properties[1]);
 
-    const viewBtn =  screen.getAllByTestId("view-details")[2];
-    fireEvent.click(viewBtn);
-    expect(window.location.pathname).toBe('/property-details/3');
-
-    const property =  screen.getByTestId("property-name");
-    expect(property.textContent).toBe("Beach House");
-  }); 
-
-  it('Data is correctly fetched', () => {
-    const propertyName =  screen.getByTestId("property-name");
-    const propertyDesc =  screen.getByTestId("property-desc");
-    const propertyLocation =  screen.getByTestId("property-location");
-    const propertyPrice =  screen.getByTestId("property-price");
-    const propertyAmenities =  screen.getByTestId("property-amenities");
-    const propertyRating =  screen.getByTestId("property-rating");
-
-    expect(propertyName.textContent).toBe("Beach House");
-    expect(propertyDesc.textContent).toBe("A beautiful beach house with ocean views.");
-    expect(propertyLocation.textContent).toBe("Location: Coastal City, USA");
-    expect(propertyPrice.textContent).toBe("Price: $200/night");
-    expect(propertyAmenities.textContent).toBe("Amenities: Swimming Pool, Beach Access, Gym");
-    expect(propertyRating.textContent).toBe("Rating: 3.8 Stars");
-    expect(screen.queryByTestId("apply-discount")).toBeInTheDocument();
-  }); 
-
-  it('Modal Validation is correctly handled 1', () => {
     const discountBtn = screen.getByTestId("apply-discount");
     fireEvent.click(discountBtn);
 
@@ -56,12 +31,12 @@ describe('Property Details Page Testing', () => {
     fireEvent.click(applyBtn);
 
     expect(screen.queryByTestId("modal-apply")).toBeInTheDocument();
-    const errorMessage = screen.queryByTestId("error");
+    const errorMessage = screen.queryByTestId("modal-error");
     expect(errorMessage).toBeInTheDocument();
     expect(errorMessage.textContent).toBe("Incorrect coupon");
   });
   
-  it('Modal Validation is correctly handled 2', () => {
+  it('Modal Validation is correctly handled - 2', () => {
     const discountBtn = screen.getByTestId("apply-discount");
     fireEvent.click(discountBtn);
 
@@ -73,28 +48,80 @@ describe('Property Details Page Testing', () => {
     fireEvent.click(applyBtn);
 
     expect(screen.queryByTestId("modal-apply")).toBeInTheDocument();
-    const errorMessage = screen.queryByTestId("error");
+    const errorMessage = screen.queryByTestId("modal-error");
     expect(errorMessage).toBeInTheDocument();
     expect(errorMessage.textContent).toBe("Empty input field");
   }); 
 
-  it('Apply correct discount coupon condition is properly handled', () => {
+  it('Correct Discount Codes are properly handled - 1', () => {
     let discountPrice = screen.queryByTestId("property-disc-price");
     expect(discountPrice).not.toBeInTheDocument();
+
+    const realPrice = screen.queryByTestId("property-price");
+    expect(realPrice).toBeInTheDocument();
+    expect(realPrice.textContent).toBe("$150/night");
+
     const discountBtn = screen.getByTestId("apply-discount");
     fireEvent.click(discountBtn);
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-        target: { value: "20off" },
+        target: { value: "10off" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);
 
     expect(screen.queryByTestId("modal-apply")).not.toBeInTheDocument();
-    expect(screen.queryByTestId("error")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("modal-error")).not.toBeInTheDocument();
     discountPrice = screen.getByTestId("property-disc-price");
-    expect(discountPrice.textContent).toBe("Discounted Price: $160/night");
+    expect(discountPrice.textContent).toBe("Discounted Price: $135/night");
   }); 
 
+  it('Correct Discount Codes are properly handled - 2', () => {
+    let discountPrice = screen.queryByTestId("property-disc-price");
+    expect(discountPrice).not.toBeInTheDocument();
+
+    const realPrice = screen.queryByTestId("property-price");
+    expect(realPrice).toBeInTheDocument();
+    expect(realPrice.textContent).toBe("$150/night");
+
+    const discountBtn = screen.getByTestId("apply-discount");
+    fireEvent.click(discountBtn);
+
+    const modalInput = screen.getByTestId("modal-input");
+    fireEvent.change(modalInput, {
+        target: { value: "20OFF" },
+    });
+    const applyBtn = screen.getByTestId("modal-apply");
+    fireEvent.click(applyBtn);
+
+    expect(screen.queryByTestId("modal-apply")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("modal-error")).not.toBeInTheDocument();
+    discountPrice = screen.getByTestId("property-disc-price");
+    expect(discountPrice.textContent).toBe("Discounted Price: $120/night");
+  }); 
+
+  it('Correct Discount Codes are properly handled - 3', () => {
+    let discountPrice = screen.queryByTestId("property-disc-price");
+    expect(discountPrice).not.toBeInTheDocument();
+
+    const realPrice = screen.queryByTestId("property-price");
+    expect(realPrice).toBeInTheDocument();
+    expect(realPrice.textContent).toBe("$150/night");
+
+    const discountBtn = screen.getByTestId("apply-discount");
+    fireEvent.click(discountBtn);
+
+    const modalInput = screen.getByTestId("modal-input");
+    fireEvent.change(modalInput, {
+        target: { value: "50off" },
+    });
+    const applyBtn = screen.getByTestId("modal-apply");
+    fireEvent.click(applyBtn);
+
+    expect(screen.queryByTestId("modal-apply")).not.toBeInTheDocument();
+    expect(screen.queryByTestId("modal-error")).not.toBeInTheDocument();
+    discountPrice = screen.getByTestId("property-disc-price");
+    expect(discountPrice.textContent).toBe("Discounted Price: $105/night");
+  }); 
 });

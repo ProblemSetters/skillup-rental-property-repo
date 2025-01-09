@@ -17,41 +17,6 @@ describe('Filter Component Testing', () => {
     cleanup();
   });
 
-  it('Price sorting button is working correctly', () => {
-    let properties = screen.getAllByTestId("property-name");
-    expect(properties.length).toBe(10);
-    properties.forEach((property, index) => {
-        expect(property.textContent).toBe(data.properties[index].name);
-    });
-
-    const priceBtn = screen.getByTestId("price-button");
-    fireEvent.click(priceBtn);
-    properties = screen.getAllByTestId("property-name");
-    expect(properties[0].textContent).toBe("Rustic Cabin");
-    expect(properties[1].textContent).toBe("Charming Bungalow");
-    expect(properties[2].textContent).toBe("Cozy Cottage");
-    expect(properties[3].textContent).toBe("Downtown Studio");
-    expect(properties[4].textContent).toBe("Modern Apartment");
-    expect(properties[5].textContent).toBe("Urban Loft");
-    expect(properties[6].textContent).toBe("Beach House");
-    expect(properties[7].textContent).toBe("Family Home");
-    expect(properties[8].textContent).toBe("Luxury Villa");
-    expect(properties[9].textContent).toBe("Penthouse Suite");
-
-    fireEvent.click(priceBtn);
-    properties = screen.getAllByTestId("property-name");
-    expect(properties[9].textContent).toBe("Rustic Cabin");
-    expect(properties[8].textContent).toBe("Charming Bungalow");
-    expect(properties[7].textContent).toBe("Cozy Cottage");
-    expect(properties[6].textContent).toBe("Downtown Studio");
-    expect(properties[5].textContent).toBe("Modern Apartment");
-    expect(properties[4].textContent).toBe("Urban Loft");
-    expect(properties[3].textContent).toBe("Beach House");
-    expect(properties[2].textContent).toBe("Family Home");
-    expect(properties[1].textContent).toBe("Luxury Villa");
-    expect(properties[0].textContent).toBe("Penthouse Suite");
-  }); 
-
   it('Price filter is working correctly', () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
@@ -65,6 +30,9 @@ describe('Filter Component Testing', () => {
     fireEvent.change(screen.getByTestId("price-input-max"), {
         target: { value: "150" },
     });
+
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(4);
@@ -82,14 +50,33 @@ describe('Filter Component Testing', () => {
     fireEvent.click(filterBtn);
     
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.value === "2-3");
+    const targetOption = ratingOptions.find(option => option.textContent === "2 - 3 Stars");
     fireEvent.click(targetOption);
+
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(2);
     expect(properties[0].textContent).toBe("Charming Bungalow");
     expect(properties[1].textContent).toBe("Rustic Cabin");
   }); 
+
+  it('Five amenities are shown by default and increases on button click correctly', () => {
+    let properties = screen.getAllByTestId("property-name");
+    expect(properties.length).toBe(10);
+
+    const filterBtn = screen.getByTestId("filter-button");
+    fireEvent.click(filterBtn);
+
+    let amenityOptions = screen.getAllByTestId("amenities-filter");
+    expect(amenityOptions.length).toBe(5);
+
+    const moreAmenitiesButton = screen.getByTestId("more-amenities-btn");
+    fireEvent.click(moreAmenitiesButton);
+    amenityOptions = screen.getAllByTestId("amenities-filter");
+    expect(amenityOptions.length).toBe(8);
+  });
 
   it('Amenities filter is working correctly', () => {
     let properties = screen.getAllByTestId("property-name");
@@ -98,10 +85,12 @@ describe('Filter Component Testing', () => {
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
 
-    const amenitiesCheckboxes = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenitiesCheckboxes[0]); 
-    fireEvent.click(amenitiesCheckboxes[1]);
+    const amenityOptions = screen.getAllByTestId("amenities-filter");
+    fireEvent.click(amenityOptions[0]); 
+    fireEvent.click(amenityOptions[1]);
 
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(3);
@@ -124,8 +113,11 @@ describe('Filter Component Testing', () => {
         target: { value: "300" },
     });
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.value === "3-4");
+    const targetOption = ratingOptions.find(option => option.textContent === "3 - 4 Stars");
     fireEvent.click(targetOption);
+
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(3);
@@ -144,8 +136,11 @@ describe('Filter Component Testing', () => {
     fireEvent.change(screen.getByTestId("price-input-max"), {
         target: { value: "160" },
     });
-    const amenitiesCheckboxes = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenitiesCheckboxes[2]); 
+    const amenityOptions = screen.getAllByTestId("amenities-filter");
+    fireEvent.click(amenityOptions[2]); 
+
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(2);
@@ -161,11 +156,14 @@ describe('Filter Component Testing', () => {
     fireEvent.click(filterBtn);
     
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.value === "2-3");
+    const targetOption = ratingOptions.find(option => option.textContent === "2 - 3 Stars");
     fireEvent.click(targetOption);
 
-    const amenitiesCheckboxes = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenitiesCheckboxes[2]); 
+    const amenityOptions = screen.getAllByTestId("amenities-filter");
+    fireEvent.click(amenityOptions[2]); 
+
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(1);
@@ -184,25 +182,25 @@ describe('Filter Component Testing', () => {
     });
 
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.value === "4-");
+    const targetOption = ratingOptions.find(option => option.textContent === "4+ Stars");
     fireEvent.click(targetOption);
-    const amenitiesCheckboxes = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenitiesCheckboxes[3]); 
+    const amenityOptions = screen.getAllByTestId("amenities-filter");
+    fireEvent.click(amenityOptions[3]); 
 
-    const priceBtn = screen.getByTestId("price-button");
-    fireEvent.click(priceBtn);
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(2);
-    expect(properties[0].textContent).toBe("Urban Loft");
-    expect(properties[1].textContent).toBe("Penthouse Suite");
+    expect(properties[0].textContent).toBe("Penthouse Suite");
+    expect(properties[1].textContent).toBe("Urban Loft");
   }); 
 
   it('Clear button is working correctly', () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
-    const filterBtn = screen.getByTestId("filter-button");
+    let filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
     
     fireEvent.change(screen.getByTestId("price-input-min"), {
@@ -210,19 +208,21 @@ describe('Filter Component Testing', () => {
     });
 
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.value === "4-");
+    const targetOption = ratingOptions.find(option => option.textContent === "4+ Stars");
     fireEvent.click(targetOption);
-    const amenitiesCheckboxes = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenitiesCheckboxes[3]); 
+    const amenityOptions = screen.getAllByTestId("amenities-filter");
+    fireEvent.click(amenityOptions[3]); 
 
-    const priceBtn = screen.getByTestId("price-button");
-    fireEvent.click(priceBtn);
+    const applyBtn = screen.getByTestId("apply-button");
+    fireEvent.click(applyBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(2);
-    expect(properties[0].textContent).toBe("Urban Loft");
-    expect(properties[1].textContent).toBe("Penthouse Suite");
+    expect(properties[0].textContent).toBe("Penthouse Suite");
+    expect(properties[1].textContent).toBe("Urban Loft");
 
+    filterBtn = screen.getByTestId("filter-button");
+    fireEvent.click(filterBtn);
     const clearBtn = screen.getByTestId("clear-button");
     fireEvent.click(clearBtn)
     properties = screen.getAllByTestId("property-name");

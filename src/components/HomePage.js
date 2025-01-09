@@ -103,6 +103,7 @@ const HomePage = () => {
           </div>
           <div className="w-1/4 mx-3 flex justify-start">
             <button
+              data-testid="filter-button"
               onClick={() => setIsFilterModalOpen(true)}
               className="bg-gray-100 mx-8 hover:bg-gray-200 p-2 rounded-lg transition"
             >

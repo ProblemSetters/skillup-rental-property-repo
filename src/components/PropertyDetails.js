@@ -53,7 +53,6 @@ const PropertyDetails = () => {
 
         <div className="p-8 pb-8">
           <h1
-            data-testid="property-name"
             className="text-3xl font-bold text-gray-900 mb-8"
           >
             {property.name}
@@ -62,18 +61,17 @@ const PropertyDetails = () => {
           <div className="flex items-center space-x-4 mb-6">
             <div className="flex items-center text-yellow-500">
               <Star className="fill-yellow-500" size={20} />
-              <span data-testid="property-rating" className="ml-1 font-semibold">
+              <span className="ml-1 font-semibold">
                 {property.rating} Stars
               </span>
             </div>
             <div className="flex items-center text-green-700">
               <MapPin size={20} />
-              <span data-testid="property-location" className="ml-1">{property.location}</span>
+              <span className="ml-1">{property.location}</span>
             </div>
           </div>
 
           <p
-            data-testid="property-desc"
             className="text-gray-600 mb-6 leading-relaxed"
           >
             {property.description}
@@ -81,7 +79,7 @@ const PropertyDetails = () => {
 
           <div className="border-t border-b border-gray-200 py-6 mb-6">
             <h3 className="text-lg font-semibold mb-4">Amenities</h3>
-            <div data-testid="property-amenities" className="grid grid-cols-2 md:grid-cols-4 gap-8">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
               {property.amenities.map((amenity) => (
                 <div
                   key={amenity}
@@ -138,7 +136,7 @@ const PropertyDetails = () => {
               className="w-full px-16 py-2 my-12 border rounded-lg mb-8 focus:ring-2 focus:ring-green-700 focus:border-transparent"
             />
             {errorMessage && (
-              <p data-testid="error" className="text-red-500 mb-12">
+              <p data-testid="modal-error" className="text-red-500 mb-12">
                 {errorMessage}
               </p>
             )}

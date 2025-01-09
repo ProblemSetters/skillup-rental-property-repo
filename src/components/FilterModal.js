@@ -43,7 +43,6 @@ const FilterModal = ({
             Filter Properties
           </h2>
           <button
-            data-testid="filter-button"
             onClick={onClose}
             className="text-gray-600 hover:text-gray-900"
           >
@@ -132,6 +131,7 @@ const FilterModal = ({
           </div>
           {!showAllAmenities && uniqueAmenities.length > 5 && (
             <button
+              data-testid="more-amenities-btn"
               onClick={() => setShowAllAmenities(true)}
               className="mt-4 flex items-center mx-auto text-green-700 hover:text-green-900"
             >
