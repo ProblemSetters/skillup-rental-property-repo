@@ -3,12 +3,13 @@ import PropertyCard from "./PropertyCard";
 import SearchBar from "./SearchBar";
 import FilterModal from "./FilterModal";
 import propertiesData from "../data.json";
-import { SlidersHorizontal } from "lucide-react";
+import { SlidersHorizontal, Heart } from "lucide-react";
 import logo from "../assests/logo.png";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
+  const [likedProperties, setLikedProperties] = useState([]);
 
   const [tempAmenitiesFilter, setTempAmenitiesFilter] = useState([]);
   const [tempRatingFilter, setTempRatingFilter] = useState("");
@@ -86,6 +87,14 @@ const HomePage = () => {
     setIsFilterModalOpen(false);
   };
 
+  const toggleLikeProperty = (propertyId) => {
+    setLikedProperties((prevLikedProperties) =>
+      prevLikedProperties.includes(propertyId)
+        ? prevLikedProperties.filter((id) => id !== propertyId)
+        : [...prevLikedProperties, propertyId]
+    );
+  };
+
   return (
     <div className="bg-gray-50 min-h-screen">
       <header className="bg-white shadow-md p-4 sticky top-0 z-50">
@@ -110,6 +119,10 @@ const HomePage = () => {
               <SlidersHorizontal size={24} className="text-gray-700 mx-1.5" />
               Filters
             </button>
+            <div className="flex items-center">
+              <Heart size={24} className="text-red-500 mx-1.5" />
+              <span>{likedProperties.length}</span>
+            </div>
           </div>
         </div>
       </header>
@@ -118,7 +131,12 @@ const HomePage = () => {
         <div className="grid md:grid-cols-4 gap-6">
           {filteredProperties.length > 0 ? (
             filteredProperties.map((property) => (
-              <PropertyCard key={property.id} property={property} />
+              <PropertyCard
+                key={property.id}
+                property={property}
+                isLiked={likedProperties.includes(property.id)}
+                toggleLike={() => toggleLikeProperty(property.id)}
+              />
             ))
           ) : (
             <div className="col-span-4 text-center py-12">

@@ -1,18 +1,18 @@
 import React from "react";
-import { Star, MapPin } from "lucide-react";
+import { Star, MapPin, Heart } from "lucide-react";
 import { Link } from "react-router-dom";
 
-const PropertyCard = ({ property }) => {
+const PropertyCard = ({ property, isLiked, toggleLike }) => {
   return (
-    <Link
-      to={`/property-details/${property.id}`}
-      className="block bg-white rounded-xl shadow-lg overflow-hidden transition hover:shadow-xl"
-    >
-      <img
-        src={property.image}
-        alt={property.name}
-        className="w-full h-48 object-cover"
-      />
+    <div className="bg-white rounded-xl shadow-lg overflow-hidden transition hover:shadow-xl">
+      <Link to={`/property-details/${property.id}`}>
+        <img
+          data-testid="property-img"
+          src={property.image}
+          alt={property.name}
+          className="w-full h-48 object-cover"
+        />
+      </Link>
       <div className="p-4">
         <div className="flex justify-between items-center mb-2">
           <h3
@@ -32,9 +32,15 @@ const PropertyCard = ({ property }) => {
         </div>
         <div className="flex justify-between items-center">
           <div className="text-green-700 font-semibold">{property.price}</div>
+          <button onClick={toggleLike}>
+            <Heart
+              size={24}
+              className={isLiked ? "text-red-500" : "text-gray-500"}
+            />
+          </button>
         </div>
       </div>
-    </Link>
+    </div>
   );
 };
 

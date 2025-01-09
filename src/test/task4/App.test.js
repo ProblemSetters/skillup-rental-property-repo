@@ -17,7 +17,7 @@ describe('Apply Discount Modal Testing', () => {
   });
 
   it('Modal Validation is correctly handled - 1', () => {
-    const properties = screen.getAllByTestId("property-name");
+    const properties = screen.getAllByTestId("property-img");
     fireEvent.click(properties[1]);
 
     const discountBtn = screen.getByTestId("apply-discount");
