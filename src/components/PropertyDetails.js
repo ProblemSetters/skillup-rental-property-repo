@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { useParams } from "react-router-dom";
 import propertiesData from "../data.json";
 import { Star, MapPin, Tag } from "lucide-react";
+import { ToastContainer, toast } from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -40,6 +42,10 @@ const PropertyDetails = () => {
     setDiscountedPrice(price - price * discount);
     setErrorMessage("");
     setIsModalOpen(false);
+  };
+
+  const handleBookProperty = () => {
+    toast.success("Your property has been booked successfully!");
   };
 
   return (
@@ -114,7 +120,11 @@ const PropertyDetails = () => {
                 <Tag size={18} className="mr-2" />
                 Apply Discount
               </button>
-              <button className="px-9 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition">
+              <button
+                data-testid="book-property"
+                onClick={handleBookProperty}
+                className="px-9 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
+              >
                 Book Now
               </button>
             </div>
@@ -158,6 +168,7 @@ const PropertyDetails = () => {
           </div>
         </div>
       )}
+      <ToastContainer />
     </div>
   );
 };
