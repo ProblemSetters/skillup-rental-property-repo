@@ -1,11 +1,6 @@
 import React from "react";
 import App from "../../App";
-import {
-  screen,
-  render,
-  cleanup,
-  fireEvent,
-} from "@testing-library/react";
+import { screen, render, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 import data from "../../data.json";
 

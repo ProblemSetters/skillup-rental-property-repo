@@ -1,34 +1,31 @@
 import React from "react";
 import App from "../../App";
-import { screen, render, cleanup, fireEvent, act } from "@testing-library/react";
+import { screen, render, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
-import data from '../../data.json';
+import data from "../../data.json";
 
 global.console.warn = jest.fn();
-describe('Filter Component Testing', () => {
-
+describe("Filter Component Testing", () => {
   beforeEach(() => {
-    render(
-        <App />
-    );
+    render(<App />);
   });
 
   afterEach(() => {
     cleanup();
   });
 
-  it('Price filter is working correctly', () => {
+  it("Price filter is working correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     fireEvent.change(screen.getByTestId("price-input-min"), {
-        target: { value: "100" },
+      target: { value: "100" },
     });
     fireEvent.change(screen.getByTestId("price-input-max"), {
-        target: { value: "150" },
+      target: { value: "150" },
     });
 
     const applyBtn = screen.getByTestId("apply-button");
@@ -40,17 +37,19 @@ describe('Filter Component Testing', () => {
     expect(properties[1].textContent).toBe("Modern Apartment");
     expect(properties[2].textContent).toBe("Charming Bungalow");
     expect(properties[3].textContent).toBe("Downtown Studio");
-  }); 
+  });
 
-  it('Rating filter is working correctly', () => {
+  it("Rating filter is working correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.textContent === "2 - 3 Stars");
+    const targetOption = ratingOptions.find(
+      (option) => option.textContent === "2 - 3 Stars"
+    );
     fireEvent.click(targetOption);
 
     const applyBtn = screen.getByTestId("apply-button");
@@ -60,9 +59,9 @@ describe('Filter Component Testing', () => {
     expect(properties.length).toBe(2);
     expect(properties[0].textContent).toBe("Charming Bungalow");
     expect(properties[1].textContent).toBe("Rustic Cabin");
-  }); 
+  });
 
-  it('Five amenities are shown by default and increases on button click correctly', () => {
+  it("Five amenities are shown by default and increases on button click correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
@@ -78,7 +77,7 @@ describe('Filter Component Testing', () => {
     expect(amenityOptions.length).toBe(8);
   });
 
-  it('Amenities filter is working correctly', () => {
+  it("Amenities filter is working correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
@@ -86,7 +85,7 @@ describe('Filter Component Testing', () => {
     fireEvent.click(filterBtn);
 
     const amenityOptions = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenityOptions[0]); 
+    fireEvent.click(amenityOptions[0]);
     fireEvent.click(amenityOptions[1]);
 
     const applyBtn = screen.getByTestId("apply-button");
@@ -97,23 +96,25 @@ describe('Filter Component Testing', () => {
     expect(properties[0].textContent).toBe("Cozy Cottage");
     expect(properties[1].textContent).toBe("Luxury Villa");
     expect(properties[2].textContent).toBe("Penthouse Suite");
-  }); 
+  });
 
-  it('Price and rating filter is working together correctly', () => {
+  it("Price and rating filter is working together correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     fireEvent.change(screen.getByTestId("price-input-min"), {
-        target: { value: "120" },
+      target: { value: "120" },
     });
     fireEvent.change(screen.getByTestId("price-input-max"), {
-        target: { value: "300" },
+      target: { value: "300" },
     });
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.textContent === "3 - 4 Stars");
+    const targetOption = ratingOptions.find(
+      (option) => option.textContent === "3 - 4 Stars"
+    );
     fireEvent.click(targetOption);
 
     const applyBtn = screen.getByTestId("apply-button");
@@ -126,18 +127,18 @@ describe('Filter Component Testing', () => {
     expect(properties[2].textContent).toBe("Family Home");
   });
 
-  it('Price and amenities filter is working together correctly', () => {
+  it("Price and amenities filter is working together correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     fireEvent.change(screen.getByTestId("price-input-max"), {
-        target: { value: "160" },
+      target: { value: "160" },
     });
     const amenityOptions = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenityOptions[2]); 
+    fireEvent.click(amenityOptions[2]);
 
     const applyBtn = screen.getByTestId("apply-button");
     fireEvent.click(applyBtn);
@@ -146,21 +147,23 @@ describe('Filter Component Testing', () => {
     expect(properties.length).toBe(2);
     expect(properties[0].textContent).toBe("Modern Apartment");
     expect(properties[1].textContent).toBe("Charming Bungalow");
-  }); 
+  });
 
-  it('Rating and amenities filter is working together correctly', () => {
+  it("Rating and amenities filter is working together correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.textContent === "2 - 3 Stars");
+    const targetOption = ratingOptions.find(
+      (option) => option.textContent === "2 - 3 Stars"
+    );
     fireEvent.click(targetOption);
 
     const amenityOptions = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenityOptions[2]); 
+    fireEvent.click(amenityOptions[2]);
 
     const applyBtn = screen.getByTestId("apply-button");
     fireEvent.click(applyBtn);
@@ -168,24 +171,26 @@ describe('Filter Component Testing', () => {
 
     expect(properties.length).toBe(1);
     expect(properties[0].textContent).toBe("Charming Bungalow");
-  }); 
+  });
 
-  it('All filters combined are working correctly', () => {
+  it("All filters combined are working correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     const filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     fireEvent.change(screen.getByTestId("price-input-min"), {
-        target: { value: "160" },
+      target: { value: "160" },
     });
 
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.textContent === "4+ Stars");
+    const targetOption = ratingOptions.find(
+      (option) => option.textContent === "4+ Stars"
+    );
     fireEvent.click(targetOption);
     const amenityOptions = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenityOptions[3]); 
+    fireEvent.click(amenityOptions[3]);
 
     const applyBtn = screen.getByTestId("apply-button");
     fireEvent.click(applyBtn);
@@ -194,24 +199,26 @@ describe('Filter Component Testing', () => {
     expect(properties.length).toBe(2);
     expect(properties[0].textContent).toBe("Penthouse Suite");
     expect(properties[1].textContent).toBe("Urban Loft");
-  }); 
+  });
 
-  it('Clear button is working correctly', () => {
+  it("Clear button is working correctly", () => {
     let properties = screen.getAllByTestId("property-name");
     expect(properties.length).toBe(10);
 
     let filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
-    
+
     fireEvent.change(screen.getByTestId("price-input-min"), {
-        target: { value: "160" },
+      target: { value: "160" },
     });
 
     const ratingOptions = screen.getAllByTestId("rating-filter");
-    const targetOption = ratingOptions.find(option => option.textContent === "4+ Stars");
+    const targetOption = ratingOptions.find(
+      (option) => option.textContent === "4+ Stars"
+    );
     fireEvent.click(targetOption);
     const amenityOptions = screen.getAllByTestId("amenities-filter");
-    fireEvent.click(amenityOptions[3]); 
+    fireEvent.click(amenityOptions[3]);
 
     const applyBtn = screen.getByTestId("apply-button");
     fireEvent.click(applyBtn);
@@ -224,12 +231,12 @@ describe('Filter Component Testing', () => {
     filterBtn = screen.getByTestId("filter-button");
     fireEvent.click(filterBtn);
     const clearBtn = screen.getByTestId("clear-button");
-    fireEvent.click(clearBtn)
+    fireEvent.click(clearBtn);
     properties = screen.getAllByTestId("property-name");
 
     expect(properties.length).toBe(10);
     properties.forEach((property, index) => {
-        expect(property.textContent).toBe(data.properties[index].name);
+      expect(property.textContent).toBe(data.properties[index].name);
     });
-  }); 
+  });
 });

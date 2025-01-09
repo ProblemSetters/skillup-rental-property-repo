@@ -1,22 +1,19 @@
 import React from "react";
 import App from "../../App";
-import { screen, render, cleanup, fireEvent, act } from "@testing-library/react";
+import { screen, render, cleanup, fireEvent } from "@testing-library/react";
 import "@testing-library/jest-dom/extend-expect";
 
 global.console.warn = jest.fn();
-describe('Apply Discount Modal Testing', () => {
-
+describe("Apply Discount Modal Testing", () => {
   beforeEach(() => {
-    render(
-        <App />
-    );
+    render(<App />);
   });
 
   afterEach(() => {
     cleanup();
   });
 
-  it('Modal Validation is correctly handled - 1', () => {
+  it("Modal Validation is correctly handled - 1", () => {
     const properties = screen.getAllByTestId("property-img");
     fireEvent.click(properties[1]);
 
@@ -25,7 +22,7 @@ describe('Apply Discount Modal Testing', () => {
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-        target: { value: "off" },
+      target: { value: "off" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);
@@ -35,14 +32,14 @@ describe('Apply Discount Modal Testing', () => {
     expect(errorMessage).toBeInTheDocument();
     expect(errorMessage.textContent).toBe("Incorrect coupon");
   });
-  
-  it('Modal Validation is correctly handled - 2', () => {
+
+  it("Modal Validation is correctly handled - 2", () => {
     const discountBtn = screen.getByTestId("apply-discount");
     fireEvent.click(discountBtn);
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-        target: { value: "" },
+      target: { value: "" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);
@@ -51,9 +48,9 @@ describe('Apply Discount Modal Testing', () => {
     const errorMessage = screen.queryByTestId("modal-error");
     expect(errorMessage).toBeInTheDocument();
     expect(errorMessage.textContent).toBe("Empty input field");
-  }); 
+  });
 
-  it('Correct Discount Codes are properly handled - 1', () => {
+  it("Correct Discount Codes are properly handled - 1", () => {
     let discountPrice = screen.queryByTestId("property-disc-price");
     expect(discountPrice).not.toBeInTheDocument();
 
@@ -66,7 +63,7 @@ describe('Apply Discount Modal Testing', () => {
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-        target: { value: "10off" },
+      target: { value: "10off" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);
@@ -75,9 +72,9 @@ describe('Apply Discount Modal Testing', () => {
     expect(screen.queryByTestId("modal-error")).not.toBeInTheDocument();
     discountPrice = screen.getByTestId("property-disc-price");
     expect(discountPrice.textContent).toBe("Discounted Price: $135/night");
-  }); 
+  });
 
-  it('Correct Discount Codes are properly handled - 2', () => {
+  it("Correct Discount Codes are properly handled - 2", () => {
     let discountPrice = screen.queryByTestId("property-disc-price");
     expect(discountPrice).not.toBeInTheDocument();
 
@@ -90,7 +87,7 @@ describe('Apply Discount Modal Testing', () => {
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-        target: { value: "20OFF" },
+      target: { value: "20OFF" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);
@@ -99,9 +96,9 @@ describe('Apply Discount Modal Testing', () => {
     expect(screen.queryByTestId("modal-error")).not.toBeInTheDocument();
     discountPrice = screen.getByTestId("property-disc-price");
     expect(discountPrice.textContent).toBe("Discounted Price: $120/night");
-  }); 
+  });
 
-  it('Correct Discount Codes are properly handled - 3', () => {
+  it("Correct Discount Codes are properly handled - 3", () => {
     let discountPrice = screen.queryByTestId("property-disc-price");
     expect(discountPrice).not.toBeInTheDocument();
 
@@ -114,7 +111,7 @@ describe('Apply Discount Modal Testing', () => {
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-        target: { value: "50off" },
+      target: { value: "50off" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);
@@ -123,5 +120,5 @@ describe('Apply Discount Modal Testing', () => {
     expect(screen.queryByTestId("modal-error")).not.toBeInTheDocument();
     discountPrice = screen.getByTestId("property-disc-price");
     expect(discountPrice.textContent).toBe("Discounted Price: $105/night");
-  }); 
+  });
 });

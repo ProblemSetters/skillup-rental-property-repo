@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 import propertiesData from "../data.json";
 import { Star, MapPin, Tag } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
-import 'react-toastify/dist/ReactToastify.css';
+import "react-toastify/dist/ReactToastify.css";
 
 const PropertyDetails = () => {
   const { id } = useParams();
@@ -58,9 +58,7 @@ const PropertyDetails = () => {
         />
 
         <div className="p-8 pb-8">
-          <h1
-            className="text-3xl font-bold text-gray-900 mb-8"
-          >
+          <h1 className="text-3xl font-bold text-gray-900 mb-8">
             {property.name}
           </h1>
 
@@ -77,9 +75,7 @@ const PropertyDetails = () => {
             </div>
           </div>
 
-          <p
-            className="text-gray-600 mb-6 leading-relaxed"
-          >
+          <p className="text-gray-600 mb-6 leading-relaxed">
             {property.description}
           </p>
 
@@ -99,7 +95,10 @@ const PropertyDetails = () => {
 
           <div className="flex items-center justify-between my-12">
             <div>
-              <p data-testid="property-price" className="text-xl font-bold text-green-700">
+              <p
+                data-testid="property-price"
+                className="text-xl font-bold text-green-700"
+              >
                 {property.price}
               </p>
               {discountedPrice && (
