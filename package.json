@@ -17,9 +17,9 @@
     "start": "PORT=8000 react-scripts start",
     "build": "react-scripts build",
     "test": "./node_modules/.bin/react-scripts test --watchAll=false --verbose --env=jsdom --testResultsProcessor ./node_modules/jest-junit",
-    "test:task1": "(react-scripts test test/task1/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task1.xml)",
     "test:task2": "(react-scripts test test/task2/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task2.xml)",
-    "test:task3": "(react-scripts test test/task3/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task3.xml)",
+    "test:task4": "(react-scripts test test/task4/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task4.xml)",
+    "test:task5": "(react-scripts test test/task5/App.test.js --watchAll=false --env=jsdom --verbose --colors --testResultsProcessor=jest-junit); (mv junit.xml ./output/task5.xml)",
     "eject": "react-scripts eject"
   },
   "devDependencies": {
