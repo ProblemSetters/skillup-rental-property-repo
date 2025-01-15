@@ -119,7 +119,7 @@ const HomePage = () => {
               <SlidersHorizontal size={24} className="text-gray-700 mx-1.5" />
               Filters
             </button>
-            <div className="flex items-center">
+            <div data-testid="like-count" className="flex items-center">
               <Heart size={24} className="text-red-500 mx-1.5" />
               <span>{likedProperties.length}</span>
             </div>

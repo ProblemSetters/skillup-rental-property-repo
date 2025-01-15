@@ -32,7 +32,7 @@ const PropertyCard = ({ property, isLiked, toggleLike }) => {
         </div>
         <div className="flex justify-between items-center">
           <div className="text-green-700 font-semibold">{property.price}</div>
-          <button onClick={toggleLike}>
+          <button data-testid="like-btn" onClick={toggleLike}>
             <Heart
               size={24}
               className={isLiked ? "text-red-500" : "text-gray-500"}
