@@ -5,6 +5,7 @@ import FilterModal from "./FilterModal";
 import propertiesData from "../data.json";
 import { SlidersHorizontal, Heart } from "lucide-react";
 import logo from "../assests/logo.png";
+import UserButton from "./UserButton";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -110,7 +111,7 @@ const HomePage = () => {
           <div className="w-1/2 px-6">
             <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
           </div>
-          <div className="w-1/4 mx-3 flex justify-start">
+          <div className="w-1/4 mx-3 flex justify-start items-center space-x-4">
             <button
               data-testid="filter-button"
               onClick={() => setIsFilterModalOpen(true)}
@@ -123,6 +124,8 @@ const HomePage = () => {
               <Heart size={24} className="text-red-500 mx-1.5" />
               <span>{likedProperties.length}</span>
             </div>
+            <div className="flex-grow"></div>
+            <UserButton />
           </div>
         </div>
       </header>
