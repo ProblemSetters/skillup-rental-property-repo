@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { User } from "lucide-react";
-import UserModal from "./UserModal";
+import UserModal from "../Modals/UserModal";
 
 const UserButton = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);

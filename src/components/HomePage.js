@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import PropertyCard from "./PropertyCard";
-import SearchBar from "./SearchBar";
-import FilterModal from "./FilterModal";
+import FilterModal from "./Modals/FilterModal";
 import propertiesData from "../data.json";
-import { SlidersHorizontal, Heart } from "lucide-react";
-import logo from "../assests/logo.png";
-import UserButton from "./UserButton";
+import Navbar from "./Navbar/Navbar";
 
 const HomePage = () => {
   const [searchTerm, setSearchTerm] = useState("");
@@ -98,37 +95,22 @@ const HomePage = () => {
 
   return (
     <div className="bg-gray-50 min-h-screen">
-      <header className="bg-white shadow-md p-4 sticky top-0 z-50">
-        <div className="max-w-6xl mx-auto flex items-center justify-between">
-          <img
-            src={logo}
-            alt="property"
-            className="h-3 w-3 rounded object-cover"
-          />
-          <h1 className="text-xl font-bold text-gray-800 w-1/4 pl-1.5">
-            Rental Property
-          </h1>
-          <div className="w-1/2 px-6">
-            <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm} />
-          </div>
-          <div className="w-1/4 mx-3 flex justify-start items-center space-x-4">
-            <button
-              data-testid="filter-button"
-              onClick={() => setIsFilterModalOpen(true)}
-              className="bg-gray-100 mx-8 hover:bg-gray-200 p-2 rounded-lg transition"
-            >
-              <SlidersHorizontal size={24} className="text-gray-700 mx-1.5" />
-              Filters
-            </button>
-            <div data-testid="like-count" className="flex items-center">
-              <Heart size={24} className="text-red-500 mx-1.5" />
-              <span>{likedProperties.length}</span>
-            </div>
-            <div className="flex-grow"></div>
-            <UserButton />
-          </div>
-        </div>
-      </header>
+      <Navbar
+        searchTerm={searchTerm}
+        setSearchTerm={setSearchTerm}
+        likedProperties={likedProperties}
+        amenitiesFilter={tempAmenitiesFilter}
+        setAmenitiesFilter={setTempAmenitiesFilter}
+        ratingFilter={tempRatingFilter}
+        setRatingFilter={setTempRatingFilter}
+        priceFilter={tempPriceFilter}
+        setPriceFilter={setTempPriceFilter}
+        uniqueAmenities={uniqueAmenities}
+        onClear={handleClearFilters}
+        onApply={handleApplyFilters}
+        minPrice={minPrice}
+        maxPrice={maxPrice}
+      />
 
       <main className="max-w-6xl mx-auto mt-20 px-4 pt-12 pb-8">
         <div className="grid md:grid-cols-4 gap-6">

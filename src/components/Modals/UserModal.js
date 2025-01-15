@@ -1,6 +1,9 @@
 import React from "react";
+import { useNavigate } from "react-router-dom";
 
 const UserModal = ({ onClose }) => {
+  const navigate = useNavigate();
+
   return (
     <div className="absolute right-0 top-full mt-8 -ml-4 bg-white rounded-md p-2 w-48 shadow-md border border-gray-300 z-50">
       <div onClick={(e) => e.stopPropagation()}>
@@ -27,7 +30,7 @@ const UserModal = ({ onClose }) => {
           <button
             className="w-full text-left py-1 px-2 rounded hover:bg-gray-100 transition"
             onClick={() => {
-              // Handle Contact Us navigation
+              navigate("/contact-us"); 
               onClose();
             }}
           >
