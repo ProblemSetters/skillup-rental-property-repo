@@ -8,6 +8,7 @@ const UserButton = () => {
   return (
     <div className="relative">
       <button
+        data-testid="user-btn"
         onClick={() => setIsModalOpen(!isModalOpen)}
         className="bg-gray-200 rounded-full px-10 flex hover:bg-gray-300 transition"
       >

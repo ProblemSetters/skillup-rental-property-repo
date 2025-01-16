@@ -28,6 +28,7 @@ const UserModal = ({ onClose }) => {
           </button>
           <hr className="border-t-2" />
           <button
+            data-testid="contact-us-btn"
             className="w-full text-left py-1 px-2 rounded hover:bg-gray-100 transition"
             onClick={() => {
               navigate("/contact-us"); 
