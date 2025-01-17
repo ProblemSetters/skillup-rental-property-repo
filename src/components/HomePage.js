@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import PropertyCard from "./PropertyCard";
 import FilterModal from "./Modals/FilterModal";
-import propertiesData from "../data.json";
+import propertiesData from "../data/properties.json";
 import Navbar from "./Navbar/Navbar";
 
-const HomePage = () => {
+const HomePage = ({ user, setUser }) => {
   const [searchTerm, setSearchTerm] = useState("");
   const [isFilterModalOpen, setIsFilterModalOpen] = useState(false);
   const [likedProperties, setLikedProperties] = useState([]);
@@ -110,6 +110,8 @@ const HomePage = () => {
         onApply={handleApplyFilters}
         minPrice={minPrice}
         maxPrice={maxPrice}
+        user={user}
+        setUser={setUser}
       />
 
       <main className="max-w-6xl mx-auto mt-20 px-4 pt-12 pb-8">

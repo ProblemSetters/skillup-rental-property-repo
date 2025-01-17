@@ -20,6 +20,8 @@ const Navbar = ({
   onApply,
   minPrice,
   maxPrice,
+  user,
+  setUser
 }) => {
   return (
     <header className="bg-white shadow-md p-4 sticky top-0 z-50">
@@ -54,7 +56,7 @@ const Navbar = ({
             <span>{likedProperties.length}</span>
           </div>
           <div className="flex-grow"></div>
-          <UserButton />
+          <UserButton user={user} setUser={setUser}/>
         </div>
       </div>
     </header>

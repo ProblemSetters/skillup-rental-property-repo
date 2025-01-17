@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useParams } from "react-router-dom";
-import propertiesData from "../data.json";
+import propertiesData from "../data/properties.json";
 import { Star, MapPin, Tag } from "lucide-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";

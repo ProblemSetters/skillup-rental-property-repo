@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { User } from "lucide-react";
 import UserModal from "../Modals/UserModal";
 
-const UserButton = () => {
+const UserButton = ({ user, setUser }) => {
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   return (
@@ -14,7 +14,9 @@ const UserButton = () => {
       >
         <User className="text-gray-700" />
       </button>
-      {isModalOpen && <UserModal onClose={() => setIsModalOpen(false)} />}
+      {isModalOpen && (
+        <UserModal onClose={() => setIsModalOpen(false)} user={user} setUser={setUser} />
+      )}
     </div>
   );
 };
