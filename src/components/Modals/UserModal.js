@@ -4,8 +4,6 @@ import { useNavigate } from "react-router-dom";
 const UserModal = ({ onClose, user, setUser }) => {
   const navigate = useNavigate();
 
-  console.log("UserModal -1 user:", user);
-
   const handleLogout = () => {
     setUser(null);
     onClose();
@@ -18,6 +16,7 @@ const UserModal = ({ onClose, user, setUser }) => {
           {user ? (
             <>
               <button
+                data-testid="user-profile-btn"
                 className="w-full text-left py-1 px-2 rounded hover:bg-gray-100 transition"
                 onClick={() => {
                   navigate("/user-profile");
@@ -27,6 +26,7 @@ const UserModal = ({ onClose, user, setUser }) => {
                 User Profile
               </button>
               <button
+                data-testid="logout-btn"
                 className="w-full text-left py-1 px-2 rounded hover:bg-gray-100 transition"
                 onClick={handleLogout}
               >
@@ -35,6 +35,7 @@ const UserModal = ({ onClose, user, setUser }) => {
             </>
           ) : (
             <button
+              data-testid="login-btn"
               className="w-full text-left py-1 px-2 rounded hover:bg-gray-100 transition"
               onClick={() => {
                 navigate("/login");

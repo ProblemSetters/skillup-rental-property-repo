@@ -10,6 +10,21 @@ const Login = ({ setUser }) => {
   const navigate = useNavigate();
 
   const handleLogin = () => {
+    if (!email && !password) {
+      setError("Please enter both email and password");
+      return;
+    }
+
+    if (!email) {
+      setError("Please enter your email");
+      return;
+    }
+
+    if (!password) {
+      setError("Please enter your password");
+      return;
+    }
+
     const user = usersData.find(
       (u) => u.email === email && u.password === password
     );
@@ -22,7 +37,11 @@ const Login = ({ setUser }) => {
         navigate("/");
       }, 2000);
     } else {
-      setError("Invalid email or password");
+      if (!usersData.some((u) => u.email === email)) {
+        setError("Invalid email");
+      } else {
+        setError("Invalid password");
+      }
     }
   };
 
@@ -32,6 +51,7 @@ const Login = ({ setUser }) => {
         <h2 className="text-2xl font-bold mb-6 text-center">Login</h2>
         <label className="block text-gray-700 mb-2" htmlFor="email">Email</label>
         <input
+          data-testid="email-input"  
           id="email"
           type="email"
           placeholder="Email"
@@ -41,6 +61,7 @@ const Login = ({ setUser }) => {
         />
         <label className="block text-gray-700 mb-2" htmlFor="password">Password</label>
         <input
+          data-testid="password-input"   
           id="password"
           type="password"
           placeholder="Password"
@@ -48,8 +69,9 @@ const Login = ({ setUser }) => {
           onChange={(e) => setPassword(e.target.value)}
           className="w-full mb-6 p-2 border rounded"
         />
-        {error && <p className="text-red-500 my-8">{error}</p>}
+        {error && <p data-testid="error" className="text-red-500 my-8">{error}</p>}
         <button
+          data-testid="login-button"   
           onClick={handleLogin}
           className="w-full bg-green-700 text-white p-2 mt-16 rounded"
         >

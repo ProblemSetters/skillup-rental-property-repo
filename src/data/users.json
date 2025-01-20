@@ -1,18 +1,42 @@
 [
     {
-      "id": 1,
-      "name": "John Doe",
-      "email": "john@example.com",
-      "password": "password123",
-      "dob": "1990-01-01",
-      "address": "123 Main St, Anytown, USA"
+        "id": 1,
+        "name": "Alex Taylor",
+        "email": "alex.taylor@example.com",
+        "password": "securePass123",
+        "dob": "1992-03-10",
+        "address": "101 Maple St, Springfield, USA"
     },
     {
-      "id": 2,
-      "name": "Jane Smith",
-      "email": "jane@example.com",
-      "password": "password456",
-      "dob": "1985-05-15",
-      "address": "456 Elm St, Othertown, USA"
+        "id": 2,
+        "name": "Casey Morgan",
+        "email": "casey.morgan@example.com",
+        "password": "myPassword456",
+        "dob": "1988-07-22",
+        "address": "202 Oak Ave, Rivertown, USA"
+    },
+    {
+        "id": 3,
+        "name": "Jordan Lee",
+        "email": "jordan.lee@example.com",
+        "password": "pass@789",
+        "dob": "1995-12-05",
+        "address": "303 Pine Ln, Brooksville, USA"
+    },
+    {
+        "id": 4,
+        "name": "Taylor Quinn",
+        "email": "taylor.quinn@example.com",
+        "password": "Taylor#1234",
+        "dob": "1990-11-18",
+        "address": "404 Birch Rd, Forestville, USA"
+    },
+    {
+        "id": 5,
+        "name": "Riley Blake",
+        "email": "riley.blake@example.com",
+        "password": "Riley$5678",
+        "dob": "1987-08-30",
+        "address": "505 Cedar Ct, Lakeside, USA"
     }
 ]
