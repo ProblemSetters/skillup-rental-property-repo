@@ -111,7 +111,7 @@ describe("Apply Discount Modal Testing", () => {
 
     const modalInput = screen.getByTestId("modal-input");
     fireEvent.change(modalInput, {
-      target: { value: "50off" },
+      target: { value: "30off" },
     });
     const applyBtn = screen.getByTestId("modal-apply");
     fireEvent.click(applyBtn);

@@ -31,7 +31,7 @@ const PropertyDetails = () => {
       case "20OFF":
         discount = 0.2;
         break;
-      case "50OFF":
+      case "30OFF":
         discount = 0.3;
         break;
       default:
