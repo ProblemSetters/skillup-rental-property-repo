@@ -133,7 +133,7 @@ const PropertyDetails = () => {
 
       {/* Modal */}
       {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div className="coupon-modal fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
           <div className="bg-white rounded-xl p-6 w-full max-w-md">
             <h4 className="text-xl font-semibold mb-4">Enter Coupon Code</h4>
             <input
