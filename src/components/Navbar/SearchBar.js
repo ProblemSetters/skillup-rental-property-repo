@@ -1,7 +1,7 @@
 import React from "react";
 import { Search } from "lucide-react";
 
-const SearchBar = ({ searchTerm, setSearchTerm }) => {
+const SearchBar = () => {
   return (
     <div className="relative">
       <input
@@ -9,8 +9,6 @@ const SearchBar = ({ searchTerm, setSearchTerm }) => {
         type="text"
         data-testid="search-bar"
         placeholder="Search destinations, properties..."
-        value={searchTerm}
-        onChange={(e) => setSearchTerm(e.target.value)}
       />
       <Search
         className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"

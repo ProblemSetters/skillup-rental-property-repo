@@ -4,7 +4,7 @@ import Navbar from "./Navbar/Navbar";
 const ContactUs = () => {
   return (
     <>
-      <Navbar searchTerm="" setSearchTerm={() => {}} likedProperties={[]} />
+      <Navbar/>
       <div data-testid="contact-us-page" className="max-w-2xl mx-auto p-8 bg-white shadow-lg rounded-lg m-14">
         <h1 className="text-3xl font-bold mb-8 text-center text-gray-800">
           Contact Us

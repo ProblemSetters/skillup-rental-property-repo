@@ -1,52 +1,15 @@
-import React, { useState } from "react";
+import React from "react";
 import { useParams } from "react-router-dom";
 import propertiesData from "../data/properties.json";
 import { Star, MapPin, Tag } from "lucide-react";
-import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+// import { ToastContainer, toast } from "react-toastify";
 
 const PropertyDetails = () => {
   const { id } = useParams();
   const property = propertiesData.properties.find((p) => p.id === parseInt(id));
-  const [coupon, setCoupon] = useState("");
-  const [discountedPrice, setDiscountedPrice] = useState(null);
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleApplyCoupon = () => {
-    if (coupon.trim() === "") {
-      setErrorMessage("Empty input field");
-      return;
-    }
-
-    const price = parseInt(
-      property.price.replace("$", "").replace("/night", "")
-    );
-    let discount = 0;
-
-    switch (coupon.toUpperCase()) {
-      case "10OFF":
-        discount = 0.1;
-        break;
-      case "20OFF":
-        discount = 0.2;
-        break;
-      case "50OFF":
-        discount = 0.3;
-        break;
-      default:
-        setErrorMessage("Incorrect coupon");
-        return;
-    }
-
-    setDiscountedPrice(price - price * discount);
-    setErrorMessage("");
-    setIsModalOpen(false);
-  };
-
-  const handleBookProperty = () => {
-    toast.success("Your property has been booked successfully!");
-  };
+  // toast.success("Your property has been booked successfully!");
 
   return (
     <div className="min-h-screen bg-gray-50 flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
@@ -101,19 +64,16 @@ const PropertyDetails = () => {
               >
                 {property.price}
               </p>
-              {discountedPrice && (
-                <p
+              {/* <p
                   data-testid="property-disc-price"
                   className="text-base text-green-600 mt-1"
                 >
-                  Discounted Price: ${discountedPrice}/night
-                </p>
-              )}
+                  Discounted Price: $NA/night
+                </p> */}
             </div>
             <div className="space-x-4">
               <button
                 data-testid="apply-discount"
-                onClick={() => setIsModalOpen(true)}
                 className="inline-flex px-9 py-2 border border-green-700 text-green-700 rounded-lg hover:bg-green-50 transition"
               >
                 <Tag size={18} className="mr-2" />
@@ -121,7 +81,6 @@ const PropertyDetails = () => {
               </button>
               <button
                 data-testid="book-property"
-                onClick={handleBookProperty}
                 className="px-9 py-2 bg-green-700 text-white rounded-lg hover:bg-green-800 transition"
               >
                 Book Now
@@ -132,42 +91,32 @@ const PropertyDetails = () => {
       </div>
 
       {/* Modal */}
-      {isModalOpen && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
-          <div className="bg-white rounded-xl p-6 w-full max-w-md">
-            <h4 className="text-xl font-semibold mb-4">Enter Coupon Code</h4>
-            <input
-              type="text"
-              value={coupon}
-              data-testid="modal-input"
-              onChange={(e) => setCoupon(e.target.value)}
-              placeholder="Enter coupon code"
-              className="w-full px-16 py-2 my-12 border rounded-lg mb-8 focus:ring-2 focus:ring-green-700 focus:border-transparent"
-            />
-            {errorMessage && (
-              <p data-testid="modal-error" className="text-red-500 mb-12">
-                {errorMessage}
-              </p>
-            )}
-            <div className="flex space-x-4">
-              <button
-                data-testid="modal-apply"
-                onClick={handleApplyCoupon}
-                className="flex-1 bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition"
-              >
-                Apply Coupon
-              </button>
-              <button
-                onClick={() => setIsModalOpen(false)}
-                className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition"
-              >
-                Close
-              </button>
-            </div>
+      <div disabled className="coupon-modal fixed inset-0 bg-black bg-opacity-50 z-50 flex items-center justify-center">
+        <div className="bg-white rounded-xl p-6 w-full max-w-md">
+          <h4 className="text-xl font-semibold mb-4">Enter Coupon Code</h4>
+          <input
+            type="text"
+            data-testid="modal-input"
+            placeholder="Enter coupon code"
+            className="w-full px-16 py-2 my-12 border rounded-lg mb-8 focus:ring-2 focus:ring-green-700 focus:border-transparent"
+          />
+          <p data-testid="modal-error" className="text-red-500 mb-12">
+            Coupon Error
+          </p>
+          <div className="flex space-x-4">
+            <button
+              data-testid="modal-apply"
+              className="flex-1 bg-green-700 text-white py-2 rounded-lg hover:bg-green-800 transition"
+            >
+              Apply Coupon
+            </button>
+            <button className="flex-1 bg-gray-100 text-gray-700 py-2 rounded-lg hover:bg-gray-200 transition">
+              Close
+            </button>
           </div>
         </div>
-      )}
-      <ToastContainer />
+      </div>
+      {/* <ToastContainer /> */}
     </div>
   );
 };
