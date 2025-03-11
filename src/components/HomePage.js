@@ -13,14 +13,14 @@ const HomePage = () => {
           {propertiesData.properties.map((property) => (
             <PropertyCard key={property.id} property={property} />
           ))}
-          <div className="col-span-4 text-center py-12">
-            {/* <p
+          {/* <div className="col-span-4 text-center py-12">
+            <p
               data-testid="conditional-message"
               className="text-xl text-gray-600"
             >
               No rental properties found
-            </p> */}
-          </div>
+            </p>
+          </div> */}
         </div>
       </main>
 
