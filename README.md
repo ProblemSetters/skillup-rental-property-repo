@@ -1,4 +1,4 @@
-# React Starter
+# React: Like Property
 
 ## Environment
 
@@ -6,15 +6,26 @@
 - Node Version: 18(LTS)
 - Default Port: 8000
 
-## [Change]: Project Specifications
+## Application Demo:
 
-```text
-Note: Add your project specific Read only files below.
-```
+![](https://hrcdn.net/s3_pub/istreet-assets/3R8zfggcoCjHtN2pIQUhzg/like-property.gif)
+
+## Functionality Requirements
+
+- Like Property:
+  - Clicking the like icon on a property card changes its color to red, indicating it has been liked.
+  - The total count of liked properties is updated in the navbar.
+- Toggle Like:
+  - Double-clicking the like icon reverts its color to the original state, indicating the property is no longer liked.
+  - The total count of liked properties in the navbar decreases accordingly.
+
+## Project Specifications
 
 **Read Only Files**
 
-- `src/App.test.js`
+- `src/test/*`
+- `src/data/*`
+- `src/index.js`
 
 **Commands**
 
@@ -33,5 +44,5 @@ npm install
 - test:
 
 ```bash
-npm test
+npm run test:task2
 ```
