@@ -1,4 +1,4 @@
-# React Starter
+# React: Book Property
 
 ## Environment
 
@@ -6,15 +6,23 @@
 - Node Version: 18(LTS)
 - Default Port: 8000
 
-## [Change]: Project Specifications
+## Application Demo:
 
-```text
-Note: Add your project specific Read only files below.
-```
+![](https://hrcdn.net/s3_pub/istreet-assets/LDl-xYAAe-Ekvk0h7ufFeQ/book-property.gif)
+
+## Functionality Requirements
+
+- Click on any property card's image to navigate to the property details page.
+- On the property details page, click the "Book Now" button.
+- A success toast notification should appear with the message: "Your property has been booked successfully!"
+
+## Project Specifications
 
 **Read Only Files**
 
-- `src/App.test.js`
+- `src/test/*`
+- `src/data/*`
+- `src/index.js`
 
 **Commands**
 
@@ -33,5 +41,5 @@ npm install
 - test:
 
 ```bash
-npm test
+npm run test:task1
 ```
