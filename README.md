@@ -1,4 +1,4 @@
-# React Starter
+# React: Search Bar Component
 
 ## Environment
 
@@ -6,15 +6,23 @@
 - Node Version: 18(LTS)
 - Default Port: 8000
 
-## [Change]: Project Specifications
+## Application Demo:
 
-```text
-Note: Add your project specific Read only files below.
-```
+![](https://hrcdn.net/s3_pub/istreet-assets/iBnyELifMyIqIOgBgyRXpg/search-bar.gif)
+
+## Functionality Requirements
+
+- Properties should be filtered based on the search query entered by the user.
+- The search should be case-insensitive, allowing for flexible user input.
+- If no properties match the search query, a message stating "No rental properties found" should be rendered.
+
+## Project Specifications
 
 **Read Only Files**
 
-- `src/App.test.js`
+- `src/test/*`
+- `src/data/*`
+- `src/index.js`
 
 **Commands**
 
@@ -33,5 +41,5 @@ npm install
 - test:
 
 ```bash
-npm test
+npm install && npm run test:task3
 ```

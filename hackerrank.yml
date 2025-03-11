@@ -2,9 +2,9 @@ version: 1.0
 configuration:
   has_webserver: true
   scoring:
-    command: "npm test"
+    command: npm install && npm run test:task3
     files:
-      - junit.xml
+      - output/task3.xml
   readonly_paths:
     - src/test/*
     - src/data/*
@@ -12,7 +12,10 @@ configuration:
   ide_config:
     default_open_files:
       - src/App.js
+      - src/components/HomePage.js
+      - src/components/Navbar/SearchBar.js
+      - src/components/Navbar/Navbar.js
     project_menu:
       run: npm start
       install: npm install
-      test: npm test
+      test: npm install && npm run test:task3
