@@ -2,9 +2,9 @@ version: 1.0
 configuration:
   has_webserver: true
   scoring:
-    command: "npm test"
+    command: npm install && npm run test:task5
     files:
-      - junit.xml
+      - output/task5.xml
   readonly_paths:
     - src/test/*
     - src/data/*
@@ -12,7 +12,12 @@ configuration:
   ide_config:
     default_open_files:
       - src/App.js
+      - src/components/Modals/FilterModal.js
+      - src/components/Navbar/FilterButton.js
+      - src/components/Navbar/Navbar.js
+      - src/components/HomePage.js
+      - src/data/properties.json
     project_menu:
       run: npm start
       install: npm install
-      test: npm test
+      test: npm install && npm run test:task5
