@@ -44,5 +44,5 @@ npm install
 - test:
 
 ```bash
-npm run test:task2
+npm install && npm run test:task2
 ```
