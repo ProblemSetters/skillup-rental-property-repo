@@ -1,4 +1,4 @@
-# React Starter
+# React: Contact Us Page
 
 ## Environment
 
@@ -6,15 +6,24 @@
 - Node Version: 18(LTS)
 - Default Port: 8000
 
-## [Change]: Project Specifications
+## Application Demo:
 
-```text
-Note: Add your project specific Read only files below.
-```
+![](https://hrcdn.net/s3_pub/istreet-assets/UQ5uj6v4Oc_Owglm5GJW4A/contact-us.gif)
+
+## Functionality Requirements
+
+- Clicking the UserButton present in the navbar should open the UserModal.
+- The UserModal should include a Contact Us section.
+- Clicking on the Contact Us option should navigate users to the /contact-us page.
+- The /contact-us page should render correctly upon navigation.
+
+## Project Specifications
 
 **Read Only Files**
 
-- `src/App.test.js`
+- `src/test/*`
+- `src/data/*`
+- `src/index.js`
 
 **Commands**
 
@@ -33,5 +42,5 @@ npm install
 - test:
 
 ```bash
-npm test
+npm install && npm run test:task6
 ```
